@@ -1,6 +1,6 @@
 package com.api.demo.apis;
 
-import com.api.demo.configures.web.SimplePageRequest;
+import com.api.demo.configures.web.Pageable;
 import com.google.gson.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,15 +24,17 @@ public class PublicApiRestController {
     @GetMapping
     public ReceiveDTO apnmOrgV1(
             @RequestParam("cond") @Nullable String cond,
-            SimplePageRequest pageRequest
+            Pageable pageRequest
 
     ) throws Exception {
         String apiURL = "/apnmOrg/v1/list";
-        //https://exponential-e.tistory.com/54 try-catch-resource
         try {
             StringBuffer result = new StringBuffer();
             String urlStr = BASE_URL + apiURL + serviceKey;
-            URL url = new URL(urlStr);
+            StringBuilder query = new StringBuilder(urlStr);
+            query.append(String.format("&page=%d", pageRequest.getPage()));
+            query.append(String.format("&perPage=%d", pageRequest.getPerPage()));
+            URL url = new URL(query.toString());
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
@@ -41,14 +43,10 @@ public class PublicApiRestController {
             }
             urlConnection.disconnect();
             br.close();
-            System.out.println("cond : " + cond);
-            System.out.print("pageRequest : " + pageRequest + " ");
-            System.out.println(String.format("page : %d perPage : %d", pageRequest.getPage(),pageRequest.getPerPage()));
             return GSON.fromJson(result.toString(), ReceiveDTO.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
 }

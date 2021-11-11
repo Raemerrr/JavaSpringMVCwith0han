@@ -12,9 +12,9 @@ public class SimplePageRequestHandlerMethodArgumentResolver implements HandlerMe
 
     private static final String DEFAULT_PERPAGE_PARAMETER = "perPage";
 
-    private String offsetParameterName = DEFAULT_PAGE_PARAMETER;
+    private String pageParameterName = DEFAULT_PAGE_PARAMETER;
 
-    private String sizeParameterName = DEFAULT_PERPAGE_PARAMETER;
+    private String perPageParameterName = DEFAULT_PERPAGE_PARAMETER;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
@@ -28,16 +28,16 @@ public class SimplePageRequestHandlerMethodArgumentResolver implements HandlerMe
             NativeWebRequest webRequest,
             WebDataBinderFactory binderFactory
     ) {
-        Page page = new Page(webRequest.getParameter(offsetParameterName));
-        PerPage perPage = new PerPage(webRequest.getParameter(sizeParameterName));
+        Page page = new Page(webRequest.getParameter(pageParameterName));
+        PerPage perPage = new PerPage(webRequest.getParameter(perPageParameterName));
         return new SimplePageRequest(page.getPage(), perPage.getPerPage());
     }
 
-    public void setOffsetParameterName(String offsetParameterName) {
-        this.offsetParameterName = offsetParameterName;
+    public void setPageParameterName(String pageParameterName) {
+        this.pageParameterName = pageParameterName;
     }
 
-    public void setSizeParameterName(String sizeParameterName) {
-        this.sizeParameterName = sizeParameterName;
+    public void setPerPageParameterName(String perPageParameterName) {
+        this.perPageParameterName = perPageParameterName;
     }
 }

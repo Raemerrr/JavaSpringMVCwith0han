@@ -24,8 +24,8 @@ public class PublicApiRestControllerTest {
     public void callApi() throws Exception {
         mockMvc.perform(get("/api")
                         .accept(MediaType.APPLICATION_JSON)
-                        .param("page", "qweqwerrrr")
-                        .param("perPage", "9999999999999999999999999999999")
+                        //.param("page", "2")
+                        //.param("perPage", "30")
                 ).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(handler().handlerType(PublicApiRestController.class))
@@ -43,21 +43,4 @@ public class PublicApiRestControllerTest {
         });
     }
 
-    @Test
-    public void asyncRestTemplateTest() throws InterruptedException, ExecutionException {
-
-//        Mono<String> result = webClient
-//                .get()
-//                .uri("/api")
-//                .retrieve()
-//                .bodyToMono(String.class);
-//
-//        result.subscribe(response -> {
-//            System.out.println("response : " + response);
-//        }, e -> {
-//            System.out.println("error message : " + e.getMessage());
-//        });
-//        //getWebClient().get().exchange().block().bodyToMono(User.class).block();
-
-    }
 }

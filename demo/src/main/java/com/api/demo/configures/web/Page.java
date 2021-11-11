@@ -16,7 +16,7 @@ public class Page {
 
     public Page(@Nullable String sizeString) {
         try {
-            page = Math.min(DEFAULT_PAGE, Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PAGE))));
+            page = Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PAGE)));
         } catch (NumberFormatException e) {
             page = DEFAULT_PAGE;
         }

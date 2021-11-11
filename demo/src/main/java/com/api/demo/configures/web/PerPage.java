@@ -16,7 +16,7 @@ public class PerPage {
 
     public PerPage(@Nullable String sizeString) {
         try {
-            perPage = Math.min(DEFAULT_PERPAGE, Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PERPAGE))));
+            perPage = Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PERPAGE)));
         } catch (NumberFormatException e) {
             perPage = DEFAULT_PERPAGE;
         }
