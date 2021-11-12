@@ -8,8 +8,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.concurrent.ExecutionException;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,8 +22,8 @@ public class PublicApiRestControllerTest {
     public void callApi() throws Exception {
         mockMvc.perform(get("/api")
                         .accept(MediaType.APPLICATION_JSON)
-                        //.param("page", "2")
-                        //.param("perPage", "30")
+                        .param("page", "2")
+                        .param("perPage", "30")
                 ).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(handler().handlerType(PublicApiRestController.class))

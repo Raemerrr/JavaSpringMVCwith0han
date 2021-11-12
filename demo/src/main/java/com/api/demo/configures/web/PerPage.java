@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class PerPage {
 
-    private static final int DEFAULT_PERPAGE = 10;
+    public static final int DEFAULT_PERPAGE = 10;
 
     private int perPage;
 
@@ -16,7 +16,7 @@ public class PerPage {
 
     public PerPage(@Nullable String sizeString) {
         try {
-            perPage = Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PERPAGE)));
+            perPage = Math.max(DEFAULT_PERPAGE, Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PERPAGE))));
         } catch (NumberFormatException e) {
             perPage = DEFAULT_PERPAGE;
         }
