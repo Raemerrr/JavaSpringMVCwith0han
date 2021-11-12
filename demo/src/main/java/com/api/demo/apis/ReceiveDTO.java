@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 
 @Data
-@NoArgsConstructor
 public class ReceiveDTO {
     private int page;
     private int perPage;
@@ -15,7 +14,6 @@ public class ReceiveDTO {
     private ArrayList<DataDto> data;
 
     @Data
-    @NoArgsConstructor
     public class DataDto {
         private String orgcd;   //기관코드
 
