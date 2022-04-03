@@ -2,14 +2,14 @@ package com.api.demo.apis;
 
 import com.api.demo.configures.web.Pageable;
 import com.google.gson.*;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,7 +25,7 @@ public class PublicApiRestController {
 
     @GetMapping
     public ReceiveDTO apnmOrgV1(
-            @RequestParam(value = "returnType", defaultValue = "JSON", required = false) @Nonnull String returnType,
+            @RequestParam(value = "returnType", defaultValue = "JSON", required = false) @NonNull String returnType,
             @RequestParam(value = "cond", defaultValue = "", required = false) @Nullable String cond,
             Pageable pageRequest
     ) throws Exception {
