@@ -1,7 +1,5 @@
 package com.api.demo.configures.web;
 
-import org.springframework.lang.Nullable;
-
 import java.util.Optional;
 
 public class Page {
@@ -14,7 +12,7 @@ public class Page {
         this(Integer.toString(DEFAULT_PAGE));
     }
 
-    public Page(@Nullable String sizeString) {
+    public Page(String sizeString) {
         try {
             page = Math.max(DEFAULT_PAGE, Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PAGE))));
         } catch (NumberFormatException e) {

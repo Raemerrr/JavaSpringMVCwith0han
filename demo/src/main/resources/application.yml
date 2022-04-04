@@ -1,0 +1,17 @@
+server:
+  port: 9000
+
+api:
+  url: "http://api.odcloud.kr/api"
+  serviceKey: "o9uwr1Oca7iP8zVOCdDgcndcKE8bdJjwZDmQ/WVzldc5fnxyuOrIr4V0OqTPjfdiiWvyOxEsnESDYlf0YEAOdQ=="
+
+feign:
+  client:
+    config:
+      default:
+        # 특정 FeignClient가 아닌 모든 Client에 대해 적용하고자 하는 경우 default 입력
+        loggerLevel: full
+
+logging:
+  level:
+    root: debug

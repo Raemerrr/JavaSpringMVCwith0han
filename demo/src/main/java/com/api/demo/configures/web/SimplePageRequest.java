@@ -1,6 +1,8 @@
 package com.api.demo.configures.web;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import org.springframework.util.Assert;
+
+//import static com.google.common.base.Preconditions.checkArgument;
 
 public class SimplePageRequest implements Pageable {
 
@@ -13,8 +15,10 @@ public class SimplePageRequest implements Pageable {
     }
 
     public SimplePageRequest(int page, int perPage) {
-        checkArgument(page >= Page.DEFAULT_PAGE, String.format("invalid parameters : page >= %d", Page.DEFAULT_PAGE));
-        checkArgument(perPage >= PerPage.DEFAULT_PERPAGE, "invalid parameters : perPage >= %d", PerPage.DEFAULT_PERPAGE);
+        Assert.isTrue(page >= Page.DEFAULT_PAGE, String.format("invalid parameters : page >= %d", Page.DEFAULT_PAGE));
+        Assert.isTrue(perPage >= PerPage.DEFAULT_PERPAGE, String.format("invalid parameters : perPage >= %d", PerPage.DEFAULT_PERPAGE));
+        //checkArgument(page >= Page.DEFAULT_PAGE, String.format("invalid parameters : page >= %d", Page.DEFAULT_PAGE));
+        //checkArgument(perPage >= PerPage.DEFAULT_PERPAGE, "invalid parameters : perPage >= %d", PerPage.DEFAULT_PERPAGE);
 
         this.page = page;
         this.perPage = perPage;

@@ -1,4 +1,4 @@
-package com.api.demo.apis;
+package com.api.demo.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

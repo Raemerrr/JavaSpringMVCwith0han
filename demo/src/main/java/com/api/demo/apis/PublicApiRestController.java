@@ -1,9 +1,8 @@
 package com.api.demo.apis;
 
 import com.api.demo.configures.web.Pageable;
+import com.api.demo.dtos.ReceiveDTO;
 import com.google.gson.*;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,8 @@ public class PublicApiRestController {
 
     @GetMapping
     public ReceiveDTO apnmOrgV1(
-            @RequestParam(value = "returnType", defaultValue = "JSON", required = false) @NonNull String returnType,
-            @RequestParam(value = "cond", defaultValue = "", required = false) @Nullable String cond,
+            @RequestParam(value = "returnType", defaultValue = "JSON", required = false) String returnType,
+            @RequestParam(value = "cond", defaultValue = "", required = false) String cond,
             Pageable pageRequest
     ) throws Exception {
         String apiURL = "/apnmOrg/v1/list";

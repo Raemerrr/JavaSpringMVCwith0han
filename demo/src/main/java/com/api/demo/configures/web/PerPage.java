@@ -1,7 +1,5 @@
 package com.api.demo.configures.web;
 
-import org.springframework.lang.Nullable;
-
 import java.util.Optional;
 
 public class PerPage {
@@ -14,7 +12,7 @@ public class PerPage {
         this(Integer.toString(DEFAULT_PERPAGE));
     }
 
-    public PerPage(@Nullable String sizeString) {
+    public PerPage(String sizeString) {
         try {
             perPage = Math.max(DEFAULT_PERPAGE, Integer.parseInt(Optional.ofNullable(sizeString).orElse(Integer.toString(DEFAULT_PERPAGE))));
         } catch (NumberFormatException e) {

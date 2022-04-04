@@ -1,9 +1,9 @@
 package com.api.demo.apis;
 
+import com.api.demo.dtos.ReceiveDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,7 +21,7 @@ public class Demo {
     @GetMapping
     public ReceiveDTO call(
             @RequestParam(name = "returnType", defaultValue = "JSON", required = false) @NonNull String returnType,
-            @RequestParam(name = "cond", defaultValue = "", required = false) @Nullable String cond
+            @RequestParam(name = "cond", defaultValue = "", required = false) String cond
     ) {
         ReceiveDTO receiveDTO = gson.fromJson("", ReceiveDTO.class);
         return receiveDTO;
@@ -50,6 +50,7 @@ public class Demo {
         StringBuilder sb = new StringBuilder();
         sb.append(BASE_URL);
         //sb.append("&serviceKey=")
+
         return sb.toString();
     }
 }
